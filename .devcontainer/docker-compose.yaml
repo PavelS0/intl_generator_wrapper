@@ -1,0 +1,21 @@
+version: '3'
+services:
+  dart:
+    build:
+      context: ../
+      dockerfile: .devcontainer/Dockerfile
+      
+    volumes:
+        - ../:/workspace:cached
+        - ./mount/pub-cache:/home/vscode/.pub-cache:cached
+#        - ~/.ssh:/home/vscode/.ssh
+#        - ./chrome_fifo.pipe:/home/vscode/chrome_fifo.pipe  
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    user: vscode
+  
+#  nginx: 
+#    build: nginx
+#    depends_on:
+#      - dart
+#    ports:
+#      - "8080:8080"
